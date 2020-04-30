@@ -1,0 +1,25 @@
+{
+  "attributes": {
+    "health": {
+      "delta": 0,
+      "base": 100
+    }
+  },
+  "level": 1,
+  "name": "Admin",
+  "room": "tiny:westwing",
+  "effects": [],
+  "experience": 0,
+  "inventory": {
+    "items": [],
+    "max": 16
+  },
+  "metadata": {},
+  "prompt": "> ",
+  "quests": {
+    "completed": [],
+    "active": []
+  },
+  "role": 0,
+  "equipment": {}
+}

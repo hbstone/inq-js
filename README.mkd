@@ -1,0 +1,24 @@
+RanvierMUD Tiny is a barebones starter kit for people who "know what they're doing" and just want to have a telnet
+connection, login, command parsing, and movement. There is almost nothing here which may be preferable for those that
+know what they want and don't want to spend time tearing everything down before they can build it back up.
+
+This setup includes account creation, multiplayer players per account, a _very_ basic command parser that understands
+room exits and _exact_ command entry.  That is to say the player needs to type 'look' if they want to look, not 'l'.
+This gives you freedom to do whatever kind of handling you want without any code to tear down.
+
+There are exactly 2 commands included: look and quit and there is one starter area with 3 rooms to demonstrate that
+movement actually works.
+
+The basic command parser does not support skills or channels, if you're using this bundle you know what you're doing and
+can decide how you want those to be parsed.  The input events for the login/character creation flow are nearly identical
+to bundle-example-input-events but pared down to the bare minimum. There are no character classes. There is only one
+default attribute: health.
+
+### Installation
+
+```
+git clone --recursive https://github.com/ranviermud/tiny
+cd tiny
+npm install
+git submodule foreach npm install
+```
