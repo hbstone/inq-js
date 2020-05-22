@@ -1,4 +1,5 @@
 const { Logger, Config, Player } = require('ranvier');
+const attributes = require('../../edgemud-attributes/attributes');
 
 /**
  * Finish player creation. Add the character to the account then add the player
@@ -19,12 +20,7 @@ module.exports = {
         account: args.account,
       });
 
-
-      // TIP:DefaultAttributes: This is where you can change the default attributes for players
-      const defaultAttributes = [
-        'health',
-      ];
-
+      const defaultAttributes = attributes.map(({ name }) => name);
       for (const attr of defaultAttributes) {
         player.addAttribute(state.AttributeFactory.create(attr));
       }

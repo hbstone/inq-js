@@ -341,7 +341,7 @@ const stats = {
       description: 'TODO',
     },
     formula: {
-      requires: ['php', 'phf', 'mnf'],
+      requires: ['php', 'phf', 'mef'],
       fn: deriveCombatSecondaryStat,
     },
   }, {
@@ -355,7 +355,7 @@ const stats = {
       description: 'TODO',
     },
     formula: {
-      requires: ['phr', 'phf', 'mnf'],
+      requires: ['phr', 'phf', 'mef'],
       fn: deriveCombatSecondaryStat,
     },
   }, {
@@ -369,7 +369,7 @@ const stats = {
       description: 'TODO',
     },
     formula: {
-      requires: ['mnp', 'mnf', 'phf'],
+      requires: ['mep', 'mef', 'phf'],
       fn: deriveCombatSecondaryStat,
     },
   }, {
@@ -383,7 +383,7 @@ const stats = {
       description: 'TODO',
     },
     formula: {
-      requires: ['mnr', 'mnf', 'phf'],
+      requires: ['mer', 'mef', 'phf'],
       fn: deriveCombatSecondaryStat,
     },
   }],
