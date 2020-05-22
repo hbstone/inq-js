@@ -1,15 +1,13 @@
-'use strict';
-
 // NOTE: if a variable is named "ignored", it means that any direct attempts to modify the attribute will be ignored; that is, to modify it you must modify the "required" attributes instead.
 // NOTE: if a variable is named "modifier", it means that it is presumed to be zero for new characters and CAN be directly affected by items or spells or other effects.
 
 // restricts the range between 0 and 100, inclusive
-export function cap(val) {
+function cap(val) {
   return Math.max(0, Math.min(100, val));
 }
 
 // finds the mean of a set of numbers
-export function avg(...inputs) {
+function avg(...inputs) {
   return Math.round(
     inputs.reduce((x, y) => {
       return x + y;
@@ -17,14 +15,14 @@ export function avg(...inputs) {
   );
 }
 
-// treats the base stat as a linear modifier, returns the inverse of the required stat (scaled between 0-100)
-export function deriveInverseStat(ch, ignored, x) {
+// ignores the base stat, returns the inverse of the required stat (scaled between 0-100)
+function deriveInverseStat(ch, ignored, x) {
   return cap(100 - x);
 }
 
 // treats the base stat as a linear modifier, returns an average of the two required stats
-export function deriveHumorStat(ch, modifier, x, y) {
-  return cap(modifier + avg(x, y));
+function deriveHumorStat(ch, modifier, x, y) {
+  return cap(avg(x, y) + modifier);
 }
 
 // treats the base stat as a modifier, measures "balance" (maxes when the other four humors are exactly at their midpoints)
@@ -38,15 +36,11 @@ function deriveBalanceStat(ch, modifier, bld, ybl, bbl, phl) {
   ) / 4;
   const stdev = Math.round(Math.sqrt(variance));
   const maxStdev = 35; // stdev when variance is maxed out
-  return cap(
-    modifier + (
-      100 - Math.round(stdev * (100 / maxStdev))
-    )
-  );
-},
+  return cap(100 - Math.round(stdev * (100 / maxStdev)) + modifier);
+}
 
 // treats the base stat as a linear modifer, added to a weighted average of two required stats
-export function deriveCombatStat(ch, modifier, primary, secondary) {
+function deriveCombatStat(ch, modifier, primary, secondary) {
   return cap(
     modifier + (
       Math.round(
@@ -57,7 +51,7 @@ export function deriveCombatStat(ch, modifier, primary, secondary) {
   );
 }
 
-export function deriveCombatSecondaryStat(ch, modifier, primary, secondary, tertiary) {
+function deriveCombatSecondaryStat(ch, modifier, primary, secondary, tertiary) {
   return cap(
     modifier + (
       Math.round((
@@ -69,7 +63,7 @@ export function deriveCombatSecondaryStat(ch, modifier, primary, secondary, tert
   );
 }
 
-export const stats = {
+const stats = {
   axis: [{
     name: 'hot',
     base: 100,
@@ -87,7 +81,8 @@ export const stats = {
       name: {
         short: 'Wet',
         long: 'Wet',
-      }
+      },
+      description: 'TODO',
     },
   }, {
     name: 'cld',
@@ -343,7 +338,7 @@ export const stats = {
         short: 'PhyAtk',
         long: 'Physical Attack',
       },
-      description: 'TODO (',
+      description: 'TODO',
     },
     formula: {
       requires: ['php', 'phf', 'mnf'],
@@ -360,7 +355,7 @@ export const stats = {
       description: 'TODO',
     },
     formula: {
-      requires: [i'phr', 'phf', 'mnf'],
+      requires: ['phr', 'phf', 'mnf'],
       fn: deriveCombatSecondaryStat,
     },
   }, {

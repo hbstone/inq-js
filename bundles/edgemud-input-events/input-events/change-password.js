@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = {
   event: state => (socket, args) => {
     socket.write("Your password must be at least 8 characters.\r\n");

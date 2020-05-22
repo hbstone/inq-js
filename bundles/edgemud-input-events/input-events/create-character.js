@@ -1,5 +1,3 @@
-'use strict';
-
 const { Config } = require('ranvier');
 
 /**
@@ -24,7 +22,7 @@ module.exports = {
       const exists = state.PlayerManager.exists(name);
 
       if (exists) {
-        say(`That name is already taken.`);
+        socket.write(`That name is already taken.`);
         return socket.emit('create-player', socket, args);
       }
 
@@ -34,7 +32,7 @@ module.exports = {
         confirmation = confirmation.toString("utf8").trim().toLowerCase();
 
         if (confirmation !== 'y') {
-          say(`Let's try again...`);
+          socket.write(`Let's try again...`);
           return socket.emit('create-player', socket, args);
         }
 
@@ -63,4 +61,4 @@ function validate(name) {
     return 'Your name may only contain A-Z without spaces or special characters.';
   }
   return false;
-};
+}

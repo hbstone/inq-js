@@ -2,11 +2,11 @@
   "port": 4000,
   "bundles": [
     "telnet-networking",
-    "tiny-input-events",
+    "edgemud-input-events",
     "tiny-areas",
     "tiny-commands",
     "tiny-player-events",
-    "tiny-attributes",
+    "edgemud-attributes",
     "axon-olc"
   ],
   "dataSources": {

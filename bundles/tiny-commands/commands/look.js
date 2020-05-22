@@ -1,5 +1,4 @@
-'use strict';
-const { Broadcast: B, Item, Logger, Player } = require('ranvier');
+const { Broadcast: B, Logger } = require('ranvier');
 
 module.exports = {
   command: state => function (args, player) {

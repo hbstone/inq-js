@@ -30,7 +30,7 @@ module.exports = {
         }
       }
 
-      this.moveTo(nextRoom, _ => {
+      this.moveTo(nextRoom, () => {
         state.CommandManager.get('look').execute('', this);
       });
 

@@ -1,9 +1,7 @@
-"use strict";
-
 const { Account } = require("ranvier");
 
 module.exports = {
-  event: state => (socket, name) => {
+  event: () => (socket, name) => {
     let newAccount = null;
     socket.write(`Do you want your account's username to be ${name}? [y/n] `);
 

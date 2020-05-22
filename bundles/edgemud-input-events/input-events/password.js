@@ -1,10 +1,8 @@
-"use strict";
-
 const passwordAttempts = {};
 const maxFailedAttempts = 3;
 
 module.exports = {
-  event: state => (socket, args) => {
+  event: () => (socket, args) => {
     const name = args.account.name;
 
     if (!passwordAttempts[name]) {

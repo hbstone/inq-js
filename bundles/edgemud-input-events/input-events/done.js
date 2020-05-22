@@ -1,6 +1,6 @@
 'use strict';
 
-const { Broadcast, Logger } = require('ranvier');
+const { Broadcast } = require('ranvier');
 
 /**
  * Login is done, allow the player to actually execute commands

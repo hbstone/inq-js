@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  event: state => socket => {
+  event: () => socket => {
     socket.write("Welcome to the game!\r\n");
     return socket.emit('login', socket);
   },

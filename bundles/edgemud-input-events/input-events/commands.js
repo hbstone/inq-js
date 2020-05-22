@@ -1,7 +1,5 @@
-'use strict';
-
 const { Broadcast: B, CommandType, Logger, PlayerRoles } = require('ranvier');
-const { NoPartyError, NoRecipientError, NoMessageError } = require('ranvier').Channel;
+// const { NoPartyError, NoRecipientError, NoMessageError } = require('ranvier').Channel;
 const { CommandParser, InvalidCommandError, RestrictedCommandError } = require('../../../lib/CommandParser');
 
 module.exports = {
@@ -46,8 +44,8 @@ module.exports = {
           }
         }
       } catch (error) {
-        switch(true) {
-          case error instanceof InvalidCommandError:
+        switch (true) {
+          case error instanceof InvalidCommandError: {
             // check to see if room has a matching context-specific command
             const roomCommands = player.room.getMeta('commands');
             const [commandName, ...args] = data.split(' ');
@@ -58,6 +56,7 @@ module.exports = {
               Logger.warn(`WARNING: Player tried non-existent command '${data}'`);
             }
             break;
+          }
           case error instanceof RestrictedCommandError:
             B.sayAt(player, "You can't do that.");
             break;

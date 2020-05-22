@@ -1,5 +1,3 @@
-"use strict";
-
 const { Broadcast, Config, Logger } = require("ranvier");
 
 module.exports = {
@@ -40,7 +38,6 @@ module.exports = {
           display: char.username,
           onSelect: async () => {
             let currentPlayer = pm.getPlayer(char.username);
-            let existed = false;
             if (currentPlayer) {
               // kill old connection
               Broadcast.at(currentPlayer, "Connection taken over by another client. Goodbye.");

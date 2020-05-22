@@ -1,5 +1,3 @@
-'use strict';
-
 const { Logger, Config, Player } = require('ranvier');
 
 /**

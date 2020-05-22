@@ -1,5 +1,3 @@
-'use strict';
-
 const { Logger, Config } = require('ranvier');
 
 module.exports = {
