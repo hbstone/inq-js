@@ -1,3 +1,4 @@
+// initially copied from ranviermud/tiny. refactoring tbd
 const { Broadcast: B, Logger } = require('ranvier');
 
 module.exports = {

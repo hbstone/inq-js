@@ -1,5 +1,5 @@
 const { Logger, Config, Player } = require('ranvier');
-const attributes = require('../../edgemud-attributes/attributes');
+const attributes = require('../../inq-attributes/attributes');
 
 /**
  * Finish player creation. Add the character to the account then add the player
