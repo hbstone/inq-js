@@ -18,10 +18,7 @@
     "lint": "eslint bundles && eslint lib && eslint util"
   },
   "dependencies": {
-    "babel-eslint": "^10.1.0",
     "commander": "^2.19.0",
-    "eslint": "^7.0.0",
-    "optimist": "",
     "ranvier": "^3.0.5",
     "ranvier-datasource-file": "^1.0.3",
     "semver": "^5.6.0",
@@ -31,6 +28,8 @@
     "winston": "^2.4.4"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.0.0",
     "git-url-parse": "^11.1.2"
   }
 }

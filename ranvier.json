@@ -4,10 +4,7 @@
     "telnet-networking",
     "tiny-areas",
     "tiny-player-events",
-    "inq-attributes",
-    "inq-input-events",
-    "inq-commands",
-    "axon-olc"
+    "inq-core"
   ],
   "dataSources": {
     "YamlArea": {

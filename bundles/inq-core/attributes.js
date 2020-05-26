@@ -1,6 +1,3 @@
-// NOTE: if a variable is named "ignored", it means that any direct attempts to modify the attribute will be ignored; that is, to modify it you must modify the "required" attributes instead.
-// NOTE: if a variable is named "modifier", it means that it is presumed to be zero for new characters and CAN be directly affected by items or spells or other effects.
-
 // restricts the range between 0 and 100, inclusive
 function cap(val) {
   return Math.max(0, Math.min(100, val));
@@ -47,18 +44,6 @@ function deriveCombatStat(ch, modifier, primary, secondary) {
         primary +
         (secondary / 2)
       ) / 1.5
-    )
-  );
-}
-
-function deriveCombatSecondaryStat(ch, modifier, primary, secondary, tertiary) {
-  return cap(
-    modifier + (
-      Math.round((
-        primary +
-        (secondary / 2) +
-        (tertiary / 4)
-      ) / 1.75) // 1 + 1/2 + 1/4
     )
   );
 }
@@ -113,7 +98,7 @@ const stats = {
       fn: deriveInverseStat,
     },
   }],
-  physical: [{
+  basic: [{
     name: 'str',
     base: 100,
     metadata: {
@@ -143,8 +128,7 @@ const stats = {
       },
       description: 'TODO (primarily impacts physical finesse)',
     },
-  }],
-  mental: [{
+  }, {
     name: 'int',
     base: 100,
     metadata: {
@@ -254,7 +238,7 @@ const stats = {
         short: 'PhyPow',
         long: 'Physical Power',
       },
-      description: 'TODO (primarily impacts Physical Attack, and skills that benefit from raw muscle e.g. attack damage, shoving, climbing)',
+      description: 'TODO',
     },
     formula: {
       requires: ['str', 'sol'],
@@ -268,7 +252,7 @@ const stats = {
         short: 'PhyRes',
         long: 'Physical Resistance',
       },
-      description: 'TODO (primarily impacts Physical Defense, and skills that benefit from hardiness e.g. resistance to physical weapons, poison, disease)',
+      description: 'TODO',
     },
     formula: {
       requires: ['con', 'sol'],
@@ -282,7 +266,7 @@ const stats = {
         short: 'PhyFin',
         long: 'Physical Finesse',
       },
-      description: 'TODO (affects both Physical Attack and Physical Defense, as well as skills that benefit from speed and fine motor control such as attack speed, attack accuracy, lockpicking)',
+      description: 'TODO',
     },
     formula: {
       requires: ['dex', 'sol'],
@@ -296,7 +280,7 @@ const stats = {
         short: 'MntPow',
         long: 'Mental Power',
       },
-      description: 'TODO (primarily impacts Mental Attack, and skills that benefit from increased knowledge or brain capacity e.g. spell strength, number of learn mastery slots, certain deductive "under the hood" boosts)',
+      description: 'TODO',
     },
     formula: {
       requires: ['int', 'sol'],
@@ -310,7 +294,7 @@ const stats = {
         short: 'MntRes',
         long: 'Mental Resistance',
       },
-      description: 'TODO (primarily impacts Mental Defense, and skills that benefit from applied experience e.g. speed of learning, certain recovery boosts, spell protection)',
+      description: 'TODO',
     },
     formula: {
       requires: ['wis', 'sol'],
@@ -324,75 +308,18 @@ const stats = {
         short: 'MntFin',
         long: 'Mental Finesse',
       },
-      description: 'TODO (affects both Mental Attack and Mental Defense, as well as skills that benefit from social manipulation e.g. persuation or deception, )',
+      description: 'TODO',
     },
     formula: {
-      requires: [],
+      requires: ['cha', 'sol'],
       fn: deriveCombatStat,
-    },
-  }, {
-    name: 'pha',
-    base: 100,
-    metadata: {
-      name: {
-        short: 'PhyAtk',
-        long: 'Physical Attack',
-      },
-      description: 'TODO',
-    },
-    formula: {
-      requires: ['php', 'phf', 'mef'],
-      fn: deriveCombatSecondaryStat,
-    },
-  }, {
-    name: 'phd',
-    base: 100,
-    metadata: {
-      name: {
-        short: 'PhyDef',
-        long: 'Physical Defense',
-      },
-      description: 'TODO',
-    },
-    formula: {
-      requires: ['phr', 'phf', 'mef'],
-      fn: deriveCombatSecondaryStat,
-    },
-  }, {
-    name: 'mea',
-    base: 100,
-    metadata: {
-      name: {
-        short: 'MntAtk',
-        long: 'Mental Attack',
-      },
-      description: 'TODO',
-    },
-    formula: {
-      requires: ['mep', 'mef', 'phf'],
-      fn: deriveCombatSecondaryStat,
-    },
-  }, {
-    name: 'med',
-    base: 100,
-    metadata: {
-      name: {
-        short: 'MntDef',
-        long: 'Mental Defense',
-      },
-      description: 'TODO',
-    },
-    formula: {
-      requires: ['mer', 'mef', 'phf'],
-      fn: deriveCombatSecondaryStat,
     },
   }],
 };
 
 module.exports = [
   ...stats.axis,
-  ...stats.physical,
-  ...stats.mental,
+  ...stats.basic,
   ...stats.humor,
   ...stats.combat,
 ];

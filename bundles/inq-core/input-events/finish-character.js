@@ -1,5 +1,5 @@
 const { Logger, Config, Player } = require('ranvier');
-const attributes = require('../../inq-attributes/attributes');
+const attributes = require('../attributes');
 
 /**
  * Finish player creation. Add the character to the account then add the player
